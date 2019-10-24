@@ -1,9 +1,17 @@
 {% extends "verwaltung/base.html" %}
 
 {% block title %}
-asav | Auswertung
+asav | Erfassung
 {% endblock %}
 
 {% block content %}
 <h1>Auswertung</h1>
+
+<h2>Alle Schüler:</h2>
+
+<ul>
+    {% for s in schueler %}
+        <a href="{% url 'auswertung_detail' s.id %}"><li>{{ s }}</li></a>
+    {% endfor %}
+</ul>
 {% endblock %}
