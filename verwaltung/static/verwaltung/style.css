@@ -26,15 +26,16 @@ body {
 }
 
 #navbar li a {
-    color: white;
+    color: lightgray;
+    text-decoration: underline;
 }
 
 #navbar li a:visited {
-    color: white;
+    color: lightgray;
 }
 
 #navbar li a:hover {
-    font-weight: bold;
+    color: white;
 }
 
 #navbar li.nav-logo {
@@ -44,7 +45,6 @@ body {
 
 #navbar li.nav-item {
     padding-left: 15px;
-    text-decoration: underline;
 }
 
 #content {
