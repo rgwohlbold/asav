@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from .models import Schueler, AktivitaetErgebnis, Teilnahme
+from .models import Schueler
 
 def index(request):
     return render(request, 'verwaltung/index.html')
