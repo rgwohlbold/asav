@@ -43,6 +43,11 @@ body {
     padding-left: 0px;
 }
 
+#navbar li.nav-logo a {
+    color: white;
+    text-decoration: none;
+}
+
 #navbar li.nav-item {
     padding-left: 15px;
 }
