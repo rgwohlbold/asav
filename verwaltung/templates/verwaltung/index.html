@@ -2,6 +2,6 @@
 
 <ul>
     {% for s in schueler %}
-        <a href="{% url 'schueler_detail' s.id %}"><li>{{ s.vname }} {{ s.nname }}</li></a>
+        <a href="{% url 'schueler_detail' s.id %}"><li>{{ s }}</li></a>
     {% endfor %}
 </ul>

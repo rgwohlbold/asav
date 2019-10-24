@@ -20,7 +20,7 @@ class Schueler(models.Model):
     def __str__(self):
         if self.klasse is None:
             return '{} {}'.format(self.vname, self.nname)
-        return '{} {}, {}'.format(self.vname, self.nname, self.klasse)
+        return '{} {} ({})'.format(self.vname, self.nname, self.klasse)
 
     def name(self):
         return self.vname + " " + self.nname
