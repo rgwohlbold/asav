@@ -11,7 +11,6 @@ def index(request):
 
 def detail(request, schueler_id):
     s = get_object_or_404(Schueler, id=schueler_id)
-    for i in AktivitaetErgebnis.objects.raw('SELECT verwaltung_aktivitaetergebnis.mint_punkte, verwaltung_aktivitaetergebnis.id FROM verwaltung_teilnahme INNER JOIN verwaltung_aktivitaetergebnis ON verwaltung_teilnahme.aktivitaetergebnis_id=verwaltung_aktivitaetergebnis.id WHERE verwaltung_teilnahme.schueler_id=1;'):
-        print(i)
-    return render(request, 'verwaltung/detail.html', {'schueler': s})
+    teilnahmen = Schueler.objects.get(id=schueler_id).teilnahmen.select_related('aktivitaetergebnis', 'aktivitaetergebnis__ergebnis').all()
+    return render(request, 'verwaltung/detail.html', {'schueler': s, 'teilnahmen': teilnahmen})
 

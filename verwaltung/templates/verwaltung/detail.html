@@ -2,8 +2,12 @@
 
 <ul>
     <li> Email: {{ schueler.email }} </li>
-    <li> Vorname: {{ schueler.vname}} </li>
-    <li> Vorname: {{ schueler.nname}} </li>
+
+<h2>Aktivitätsergebnisse</h2>
+<ul>
+{% for a in teilnahmen %}
+<li> {{ a.aktivitaetergebnis.aktivitaet }}: {{ a.aktivitaetergebnis.ergebnis }} ({{ a.aktivitaetergebnis.mint_punkte }} MINT-EC-Punkte)</li>
+{% endfor %}
 </ul>
 
 <a href="{% url 'index' %}">Back to index</a>

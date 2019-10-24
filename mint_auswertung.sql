@@ -1,6 +1,0 @@
--- SQLite
-SELECT verwaltung_aktivitaetergebnis.mint_punkte 
-FROM verwaltung_teilnahme
-INNER JOIN verwaltung_aktivitaetergebnis
-ON verwaltung_teilnahme.aktivitaetsergebnis_id=verwaltung_aktivitaetergebnis.id
-WHERE verwaltung_teilnahme.schueler_id=1;
