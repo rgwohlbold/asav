@@ -1,3 +1,10 @@
+{% extends "verwaltung/base.html" %}
+
+{% block title %}
+asav | Home
+{% endblock %}
+
+{% block content %}
 <h1>Alle Schüler</h1>
 
 <ul>
@@ -5,3 +12,4 @@
         <a href="{% url 'schueler_detail' s.id %}"><li>{{ s }}</li></a>
     {% endfor %}
 </ul>
+{% endblock %}

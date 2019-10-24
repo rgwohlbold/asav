@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="de">
+    <head> 
+        <title>{% block title %}asav{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'verwaltung/style.css' %}">
+    </head>
+    <body>
+        <ul id="navbar">
+            <li class="nav-logo"><b>asav</b></li>
+            <li class="nav-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="nav-item"><a href="#">Erfassung</a></li>
+            <li class="nav-item"><a href="#">Auswertung</a></li>
+            <li class="nav-item"><a href="#">Impressum</a></li>
+        </ul>
+
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

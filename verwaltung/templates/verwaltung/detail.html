@@ -1,3 +1,10 @@
+{% extends "verwaltung/base.html" %}
+
+{% block title %}
+asav | {{ schueler }}
+{% endblock %}
+
+{% block content %}
 <h1>{{ schueler }}</h1>
 
 <h2>Generelle Informationen</h2>
@@ -17,3 +24,4 @@
 </ul>
 
 <a href="{% url 'index' %}">Back to index</a>
+{% endblock %}
