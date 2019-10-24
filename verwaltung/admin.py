@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Schueler, Klasse, Aktivitaet, AktivitaetErgebnis, Ergebnis, Lehrer, Fach, Teilnahme
+from .models import Schueler, Klasse, Aktivitaet, AktivitaetErgebnis, Ergebnis, Lehrer, Fach, Teilnahme, Schuljahr
 
 admin.site.register(Schueler)
 admin.site.register(Klasse)
@@ -11,3 +11,4 @@ admin.site.register(Ergebnis)
 admin.site.register(Lehrer)
 admin.site.register(Fach)
 admin.site.register(Teilnahme)
+admin.site.register(Schuljahr)

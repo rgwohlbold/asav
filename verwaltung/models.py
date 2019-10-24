@@ -75,7 +75,6 @@ class Ergebnis(models.Model):
 class Aktivitaet(models.Model):
     name = models.CharField(max_length=100)
     fach = models.ForeignKey(Fach, on_delete=models.PROTECT)
-    # moegliche_ergebnisse = models.ManyToManyField(Ergebnis, through='AktivitaetErgebnis')
 
     def __str__(self):
         return self.name
@@ -98,11 +97,24 @@ class AktivitaetErgebnis(models.Model):
         verbose_name_plural = "Aktivitätsergebnisse"
 
 
+class Schuljahr(models.Model):
+    schuljahr =models.CharField(max_length=7, verbose_name='Schuljahr')
+
+    def __str__(self):
+        return self.schuljahr
+
+    class Meta:
+        verbose_name="Schuljahr"
+        verbose_name_plural = "Schuljahre"
+
+
+
 class Teilnahme(models.Model):
     schueler = models.ForeignKey(Schueler, on_delete=models.CASCADE, verbose_name="Schüler", related_name='teilnahmen')
     aktivitaetergebnis = models.ForeignKey(AktivitaetErgebnis, on_delete=models.PROTECT, verbose_name="Aktivitätsergebnis")
     lehrer1 = models.ForeignKey(Lehrer, on_delete=models.SET_NULL, null=True, blank=True, default=None, verbose_name="1. Betreuender Lehrer", related_name='lehrer1_set')
     lehrer2 = models.ForeignKey(Lehrer, on_delete=models.SET_NULL, null=True, blank=True, default=None, verbose_name="2. Betreuender Lehrer", related_name='lehrer2_set')
+    schuljahr = models.ForeignKey(Schuljahr, on_delete=models.PROTECT, default=None)
 
     def __str__(self):
         return '{}: {}'.format(self.schueler.name(), self.aktivitaetergebnis)
