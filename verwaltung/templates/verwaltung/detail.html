@@ -17,11 +17,16 @@ asav | {{ schueler }}
 </ul>
 
 <h2>Aktivitätsergebnisse</h2>
-<ul>
-{% for a in teilnahmen %}
-<li> {{ a.aktivitaetergebnis.aktivitaet }}: {{ a.aktivitaetergebnis.ergebnis }} ({{ a.aktivitaetergebnis.mint_punkte }} MINT-EC-Punkte)</li>
-{% endfor %}
-</ul>
+{% if teilnahmen|length == 0 %}
+    <p>Keine Aktivitäten erfasst.</p>
+{% else %}
+    <ul>
+    {% for a in teilnahmen %}
+        <li> {{ a.aktivitaetergebnis.aktivitaet }}: {{ a.aktivitaetergebnis.ergebnis }} ({{ a.aktivitaetergebnis.mint_punkte }} MINT-EC-Punkte)</li>
+    {% endfor %}
+    </ul>
+{% endif %}
 
-<a href="{% url 'erfassung' %}">Zurück zur Erfassung</a>
+
+<a href="{% url 'auswertung' %}">Zurück zur Auswertung</a>
 {% endblock %}
