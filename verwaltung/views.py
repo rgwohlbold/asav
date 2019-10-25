@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
+from .forms import SchuelerForm
 from .models import Schueler
 from .models import Klasse
 
@@ -10,6 +12,16 @@ def index(request):
 
 def erfassung(request):
     return render(request, 'verwaltung/erfassung.html')
+
+def erfassung_schueler(request):
+    if request.method == "POST":
+        form = SchuelerForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('erfassung')
+    else:
+        form = SchuelerForm()
+        return render(request, 'verwaltung/erfassung_schueler.html', {'form': form})
 
 def auswertung(request):
     k = Klasse.objects.all()

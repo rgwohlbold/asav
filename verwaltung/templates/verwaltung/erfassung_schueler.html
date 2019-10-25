@@ -5,7 +5,9 @@ asav | Erfassung
 {% endblock %}
 
 {% block content %}
-<h1>Erfassung</h1>
-    <a href="{% url 'erfassung_schueler' %}">Schüler</a>
-    <a href="">Aktivität</a>
+    <form  method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+    </form>
 {% endblock %}
