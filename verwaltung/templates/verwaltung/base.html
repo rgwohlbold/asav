@@ -5,22 +5,25 @@
     <head> 
         <title>{% block title %}asav{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{% static 'verwaltung/style.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <ul id="navbar">
-            <li class="nav-logo"><b><a href="{% url 'index' %}">asav</a></b></li>
-            <li class="nav-item"><a href="{% url 'index' %}">Home</a></li>
-            <li class="nav-item"><a href="{% url 'erfassung' %}">Erfassung</a></li>
-            <li class="nav-item"><a href="{% url 'auswertung' %}">Auswertung</a></li>
-            <li class="nav-item"><a href="{% url 'impressum' %}">Impressum</a></li>
-        </ul>
+        <div id="container">
+            <ul id="navbar">
+                <li class="nav-logo"><b><a href="{% url 'index' %}">asav</a></b></li>
+                <li class="nav-item"><a href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a href="{% url 'erfassung' %}">Erfassung</a></li>
+                <li class="nav-item"><a href="{% url 'auswertung' %}">Auswertung</a></li>
+                <li class="nav-item"><a href="{% url 'impressum' %}">Impressum</a></li>
+            </ul>
 
-        <div id="content">
-            {% block content %}
-            {% endblock %}
-        </div>
-        <div id="footer">
-            © Richard Wohlbold und Alexander Sohn 2019
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div id="footer">
+                © Richard Wohlbold und Alexander Sohn 2019
+            </div>
         </div>
     </body>
 </html>
