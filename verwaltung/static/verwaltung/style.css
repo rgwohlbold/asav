@@ -24,16 +24,19 @@ body {
     padding: 15px;
     font-size: 17px;
     display: block;
+    height: 30px;
 }
 
 #navbar li {
     display: inline-block;
-    vertical-align: top;
+    height: 100%;
+    vertical-align: bottom;
 }
 
 #navbar li a {
     color: lightgray;
     text-decoration: underline;
+    vertical-align: middle;
 }
 
 #navbar li a:visited {
@@ -49,7 +52,7 @@ body {
 }
 
 #navbar li.nav-logo img {
-    height: 24px;
+    height: 30px;
 }
 
 #navbar li.nav-item {
