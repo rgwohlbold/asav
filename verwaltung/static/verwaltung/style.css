@@ -28,6 +28,7 @@ body {
 
 #navbar li {
     display: inline-block;
+    vertical-align: top;
 }
 
 #navbar li a {
@@ -44,13 +45,11 @@ body {
 }
 
 #navbar li.nav-logo {
-    font-family: monospace;
     padding-left: 0px;
 }
 
-#navbar li.nav-logo a {
-    color: white;
-    text-decoration: none;
+#navbar li.nav-logo img {
+    height: 24px;
 }
 
 #navbar li.nav-item {

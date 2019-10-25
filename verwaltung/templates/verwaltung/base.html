@@ -6,11 +6,13 @@
         <title>{% block title %}asav{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{% static 'verwaltung/style.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="{% static 'verwaltung/logo.png' %}" />
     </head>
     <body>
         <div id="container">
             <ul id="navbar">
-                <li class="nav-logo"><b><a href="{% url 'index' %}">asav</a></b></li>
+                
+                <li class="nav-logo"><a href="{% url 'index' %}"><img src="{% static 'verwaltung/logo_white.png' %}" /></a></li>
                 <li class="nav-item"><a href="{% url 'index' %}">Home</a></li>
                 <li class="nav-item"><a href="{% url 'erfassung' %}">Erfassung</a></li>
                 <li class="nav-item"><a href="{% url 'auswertung' %}">Auswertung</a></li>
