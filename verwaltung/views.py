@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 
 from .forms import SchuelerForm
+from .forms import TeilnahmeForm
 from .models import Schueler
 from .models import Klasse
 
@@ -22,6 +23,16 @@ def erfassung_schueler(request):
     else:
         form = SchuelerForm()
         return render(request, 'verwaltung/erfassung_schueler.html', {'form': form})
+
+def erfassung_teilnahme(request):
+    if request.method == "POST":
+        form = TeilnahmeForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('erfassung')
+    else:
+        form = TeilnahmeForm()
+        return render(request, 'verwaltung/erfassung_schueler.html', {'form':form})
 
 def auswertung(request):
     k = Klasse.objects.all()
