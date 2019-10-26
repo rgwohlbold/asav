@@ -132,3 +132,55 @@ body {
 h1 {
     margin-top: 0;
 }
+
+
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+/* Style inputs */
+  input[type=text], select, input[type=email], input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style the submit button */
+input[type=submit], input[type=button] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Add a background color to the submit button on mouse-over */
+input[type=submit]:hover, input[type=button]:hover {
+  background-color: #45a049;
+}
+
+#search{
+    width:260px;
+    transition: width 0.4s ease-in-out;
+}
+
+#search:focus{
+    width: 100%;
+}
+
+label{
+    text-align: left;
+}
+
+th{
+    text-align: left;
+}

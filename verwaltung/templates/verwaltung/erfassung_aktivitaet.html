@@ -6,25 +6,22 @@ asav | Erfassung Aktivität
 
 {% block content %}
         <form  method="post">
-            <ul>
+            <table>
                 {% csrf_token %}
-                {{ form.as_ul }}
-            </ul>
+                {{ form.as_table }}
+
             {{ formset.management_form }}
-            <div id="form_set">
                 {% for form in formset.forms %}
-                    <table class='no_error'>
-                        {{ form.as_table }}
-                    </table>
+                                          {{ form.as_table }}
                 {% endfor %}
-            </div>
-            <input type="button" value="Add More" id="add_more">
+                <th colspan="2" ><input type="button" value="Feld hinzufügen" id="add_more"></th>
+                <tr><th colspan="2" ><input type="submit" value="Abschicken"></th></tr>
+            </table>
                 <div id="empty_form" style="display:none">
                     <table class='no_error'>
                         {{ formset.empty_form.as_table }}
                     </table>
                 </div>
-            <input type="submit" value="Submit">
         </form>
 <script>
     $('#add_more').click(function() {

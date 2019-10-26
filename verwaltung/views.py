@@ -40,7 +40,7 @@ def erfassung_teilnahme(request):
         return redirect('erfassung')
     else:
         form = TeilnahmeForm()
-    return render(request, 'verwaltung/erfassung_schueler.html', {'form':form})
+    return render(request, 'verwaltung/erfassung_teilnahme.html', {'form':form})
 
 
 def erfassung_aktivitaet(request):

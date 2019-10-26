@@ -5,15 +5,13 @@ asav | Erfassung
 {% endblock %}
 
 {% block content %}
-    <div class="container">
     <form  method="post">
         <table>
             {% csrf_token %}
             {{ form.as_table }}
-
-            <th colspan="2" ><input type="submit" class="standard-button" value="Abschicken"></th>
-        </table>
+            <tr>
+                <th colspan="2" ><input type="submit" value="Abschicken"></th>
+        </tr>
+    </table>
     </form>
-    </div>
-
 {% endblock %}
