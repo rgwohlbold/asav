@@ -18,8 +18,8 @@ def erfassung_schueler(request):
     if request.method == "POST":
         form = SchuelerForm(request.POST)
         if form.is_valid():
-            form.save()
-        return redirect('erfassung')
+            schueler = form.save()
+        return redirect('auswertung_detail', schueler_id = schueler.pk)
     else:
         form = SchuelerForm()
         return render(request, 'verwaltung/erfassung_schueler.html', {'form': form})
