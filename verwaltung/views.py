@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.forms.formsets import formset_factory
-
+from django.db.models import Q
 
 from .forms import SchuelerForm
 from .forms import TeilnahmeForm
@@ -67,10 +67,26 @@ def erfassung_aktivitaet(request):
 
 
 
+
 def auswertung(request):
-    k = Klasse.objects.all()
     s = Schueler.objects.all()
-    return render(request, 'verwaltung/auswertung.html', {'schueler': s, 'klassen': k})
+    if request.method == 'GET':
+        query = request.GET.get('q')
+        if query != None and query != "":
+            s = Schueler.objects.filter(Q(vname__icontains=query) | Q(nname__icontains=query))
+            klassen = []
+            for schueler in s:
+                klassen.append(schueler.klasse)
+            u_klassen = set(klassen)
+            klassen = list(u_klassen)
+            return render(request, 'verwaltung/suchergebnisse.html', {'schueler': s, 'klassen': klassen})
+    klassen = []
+    for schueler in s:
+        klassen.append(schueler.klasse)
+    u_klassen = set(klassen)
+    klassen = list(u_klassen)
+    return render(request, 'verwaltung/auswertung.html', {'schueler': s, 'klassen': klassen})
+
 
 def auswertung_detail(request, schueler_id):
     s = get_object_or_404(Schueler, id=schueler_id)

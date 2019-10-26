@@ -1,0 +1,24 @@
+{% extends "verwaltung/base.html" %}
+
+{% block title %}
+asav | Home
+{% endblock %}
+
+{% block content %}
+    <h1>Suchergebnisse</h1>
+    <form method="get">
+        <input name="q" type="text" placeholder="Suche...">
+    </form>
+    {% for k in klassen %}
+    <p>Klasse: {{ k }}</p>
+        <ul>
+        {% for s in schueler %}
+            {% if k == s.klasse %}
+                <a class="list-link" href="{% url 'auswertung_detail' s.id %}"><li>{{ s }} </li></a>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <a href="{% url 'auswertung'%} ">Zurück zur Auswertung</a>
+{% endblock %}

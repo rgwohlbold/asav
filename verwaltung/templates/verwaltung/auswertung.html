@@ -6,6 +6,9 @@ asav | Erfassung
 
 {% block content %}
 <h1>Auswertung</h1>
+    <form method="get">
+        <input name="q" type="text" placeholder="Suche...">
+    </form>
 
 <h2>Alle Schüler:</h2>
     {% for k in klassen %}
