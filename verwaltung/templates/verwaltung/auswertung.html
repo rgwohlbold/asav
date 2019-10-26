@@ -11,6 +11,7 @@ asav | Erfassung
     </form>
 
 <h2>Alle Schüler:</h2>
+    <div class="accordion-container">
     {% for k in klassen %}
         <button class="accordion">Klasse {{ k }}</button>
         <div class="panel">
@@ -23,7 +24,7 @@ asav | Erfassung
             </ul>
         </div>
     {% endfor %}
-
+    </div>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;

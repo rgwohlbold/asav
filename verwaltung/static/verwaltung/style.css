@@ -177,10 +177,18 @@ input[type=submit]:hover, input[type=button]:hover {
     width: 100%;
 }
 
-label{
-    text-align: left;
-}
 
 th{
     text-align: left;
+}
+
+@media(max-width: 768px)  {
+    table{
+    margin: auto;
+}
+}
+
+.accordion-container{
+    border: 8px solid #eee;
+    border-radius: 8px;
 }
