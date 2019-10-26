@@ -6,8 +6,10 @@ asav | Erfassung
 
 {% block content %}
     <form  method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
+        <ul>
+            {% csrf_token %}
+            {{ form.as_ul }}
+        </ul>
+        <input type="submit" value="Submit">
     </form>
 {% endblock %}
