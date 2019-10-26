@@ -2,11 +2,19 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.forms.formsets import formset_factory
+
 
 from .forms import SchuelerForm
 from .forms import TeilnahmeForm
+from .forms import AktivitaetForm
+from .forms import BaseAktivitaetForm
+from .forms import AktivitaetFormSet
 from .models import Schueler
 from .models import Klasse
+from .models import Aktivitaet
+from .models import AktivitaetErgebnis
+from .models import Ergebnis
 
 def index(request):
     return render(request, 'verwaltung/index.html')
@@ -22,7 +30,7 @@ def erfassung_schueler(request):
         return redirect('auswertung_detail', schueler_id = schueler.pk)
     else:
         form = SchuelerForm()
-        return render(request, 'verwaltung/erfassung_schueler.html', {'form': form})
+    return render(request, 'verwaltung/erfassung_schueler.html', {'form': form})
 
 def erfassung_teilnahme(request):
     if request.method == "POST":
@@ -32,7 +40,32 @@ def erfassung_teilnahme(request):
         return redirect('erfassung')
     else:
         form = TeilnahmeForm()
-        return render(request, 'verwaltung/erfassung_schueler.html', {'form':form})
+    return render(request, 'verwaltung/erfassung_schueler.html', {'form':form})
+
+
+def erfassung_aktivitaet(request):
+    formset = formset_factory(AktivitaetForm, AktivitaetFormSet)
+    if request.method== "POST":
+        form = BaseAktivitaetForm(request.POST)
+        bound_formset = formset(request.POST)
+        print(form)
+        if form.is_valid() and bound_formset.is_valid():
+            akt = Aktivitaet()
+            akt.name = form.cleaned_data.get('aktivitaet_name')
+            akt.fach = form.cleaned_data.get('fach')
+            akt.save()
+
+            for bound_form in bound_formset:
+                akt_erg = AktivitaetErgebnis()
+                akt_erg.aktivitaet = akt
+                akt_erg.mint_punkte = bound_form.cleaned_data.get('mint_punkte')
+                akt_erg.ergebnis = bound_form.cleaned_data.get('ergebnis_name')
+                akt_erg.save()
+    else:
+        form = BaseAktivitaetForm()
+    return render(request, 'verwaltung/erfassung_aktivitaet.html', {'form': form, 'formset': formset})
+
+
 
 def auswertung(request):
     k = Klasse.objects.all()
