@@ -6,27 +6,33 @@ asav | Erfassung Aktivität
 
 {% block content %}
         <form  method="post">
-            <table>
+
+            <table id="result_table" >
+            <tbody>
                 {% csrf_token %}
                 {{ form.as_table }}
-
             {{ formset.management_form }}
-                {% for form in formset.forms %}
-                                          {{ form.as_table }}
+
+                {% for forms in formset.forms %}
+                    {{ forms.as_table }}
+
                 {% endfor %}
+            </tbody>
+            <tfoot>
                 <th colspan="2" ><input type="button" value="Feld hinzufügen" id="add_more"></th>
                 <tr><th colspan="2" ><input type="submit" value="Abschicken"></th></tr>
+            </tfoot>
             </table>
-                <div id="empty_form" style="display:none">
-                    <table class='no_error'>
+                <table id="empty_form" style="display:none">
+                    <tbody>
                         {{ formset.empty_form.as_table }}
-                    </table>
-                </div>
+                    </tbody>
+                </table>
         </form>
 <script>
     $('#add_more').click(function() {
         var form_idx = $('#id_form-TOTAL_FORMS').val();
-        $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#result_table tbody').append($('#empty_form tbody').html().replace(/__prefix__/g, form_idx))
         $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
     });
 </script>

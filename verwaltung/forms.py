@@ -22,8 +22,8 @@ class BaseAktivitaetForm(forms.Form):
     fach = forms.ModelChoiceField(queryset=Fach.objects.all())
 
 class AktivitaetForm(forms.Form):
-    mint_punkte = forms.IntegerField()
     ergebnis_name = forms.ModelChoiceField(queryset=Ergebnis.objects.all())
+    mint_punkte = forms.IntegerField()
 
 
 class AktivitaetFormSet(BaseFormSet):

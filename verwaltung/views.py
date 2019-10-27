@@ -61,6 +61,7 @@ def erfassung_aktivitaet(request):
                 akt_erg.mint_punkte = bound_form.cleaned_data.get('mint_punkte')
                 akt_erg.ergebnis = bound_form.cleaned_data.get('ergebnis_name')
                 akt_erg.save()
+            return redirect('erfassung')
     else:
         form = BaseAktivitaetForm()
     return render(request, 'verwaltung/erfassung_aktivitaet.html', {'form': form, 'formset': formset})
@@ -74,6 +75,7 @@ def auswertung(request):
         query = request.GET.get('q')
         if query != None and query != "":
             s = Schueler.objects.filter(Q(vname__icontains=query) | Q(nname__icontains=query))
+            
             klassen = []
             for schueler in s:
                 klassen.append(schueler.klasse)
