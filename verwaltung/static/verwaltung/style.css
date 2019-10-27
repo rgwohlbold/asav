@@ -193,3 +193,7 @@ th{
     border: 8px solid #eee;
     border-radius: 8px;
 }
+
+#errormessage {
+    font-size: larger;
+}

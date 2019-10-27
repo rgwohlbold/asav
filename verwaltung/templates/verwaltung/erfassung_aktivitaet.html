@@ -11,11 +11,18 @@ asav | Erfassung Aktivität
             <tbody>
                 {% csrf_token %}
                 {{ form.as_table }}
-            {{ formset.management_form }}
+                {{ formset.management_form }}
 
                 {% for forms in formset.forms %}
-                    {{ forms.as_table }}
-
+                    {% if forms.ergebnis_name.errors %}
+                        {% for error in forms.ergebnis_name.errors %}
+                            <tr ><td colspan="2"><p id="errormessage">{{ error }}</pid></td></tr>
+                            <tr><th>{{ forms.ergebnis_name.label_tag }}</th><td>{{ forms.ergebnis_name }}</td></tr>
+                            <tr><th>{{ forms.mint_punkte.label_tag }}</th><td>{{ forms.mint_punkte }}</td></tr>
+                        {% endfor %}
+                        {% else %}
+                        {{ forms.as_table }}
+                    {% endif %}
                 {% endfor %}
             </tbody>
             <tfoot>

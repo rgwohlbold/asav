@@ -48,7 +48,9 @@ def erfassung_aktivitaet(request):
     if request.method== "POST":
         form = BaseAktivitaetForm(request.POST)
         bound_formset = formset(request.POST)
-        print(form)
+        print(form.is_valid())
+        print(bound_formset.is_valid())
+        print(bound_formset.errors)
         if form.is_valid() and bound_formset.is_valid():
             akt = Aktivitaet()
             akt.name = form.cleaned_data.get('aktivitaet_name')
@@ -63,8 +65,9 @@ def erfassung_aktivitaet(request):
                 akt_erg.save()
             return redirect('erfassung')
     else:
+        bound_formset = formset
         form = BaseAktivitaetForm()
-    return render(request, 'verwaltung/erfassung_aktivitaet.html', {'form': form, 'formset': formset})
+    return render(request, 'verwaltung/erfassung_aktivitaet.html', {'form': form, 'formset': bound_formset})
 
 
 

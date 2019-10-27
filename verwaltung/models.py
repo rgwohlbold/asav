@@ -87,7 +87,7 @@ class Aktivitaet(models.Model):
 class AktivitaetErgebnis(models.Model):
     aktivitaet = models.ForeignKey(Aktivitaet, on_delete=models.CASCADE, verbose_name='Aktivität')
     ergebnis = models.ForeignKey(Ergebnis, on_delete=models.CASCADE)
-    mint_punkte = models.IntegerField(verbose_name='MINT-EC-Punkte')
+    mint_punkte = models.IntegerField(verbose_name='MINT-EC-Punkte', blank=True, null=True, default=None)
 
     def __str__(self):
         return '{}: {}'.format(self.aktivitaet, self.ergebnis)
