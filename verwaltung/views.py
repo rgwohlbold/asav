@@ -77,7 +77,11 @@ def auswertung(request):
     if request.method == 'GET':
         query = request.GET.get('q')
         if query != None and query != "":
-            s = Schueler.objects.filter(Q(vname__icontains=query) | Q(nname__icontains=query))
+            words = query.split(" ")
+            if len(words) == 1:
+                s = Schueler.objects.filter(Q(vname__icontains=query) | Q(nname__icontains=query))
+            else:
+                s = Schueler.objects.filter(Q(vname__icontains=words[0]) | Q(nname__icontains=words[-1]))
             
             klassen = []
             for schueler in s:
