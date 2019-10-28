@@ -7,7 +7,7 @@ asav | Erfassung Aktivität
 {% block content %}
         <form  method="post">
 
-            <table id="result_table" >
+            <table id="erfassung" >
             <tbody>
                 {% csrf_token %}
                 {{ form.as_table }}
@@ -20,7 +20,7 @@ asav | Erfassung Aktivität
                             <tr><th>{{ forms.ergebnis_name.label_tag }}</th><td>{{ forms.ergebnis_name }}</td></tr>
                             <tr><th>{{ forms.mint_punkte.label_tag }}</th><td>{{ forms.mint_punkte }}</td></tr>
                         {% endfor %}
-                        {% else %}
+                    {% else %}
                         {{ forms.as_table }}
                     {% endif %}
                 {% endfor %}
@@ -39,7 +39,7 @@ asav | Erfassung Aktivität
 <script>
     $('#add_more').click(function() {
         var form_idx = $('#id_form-TOTAL_FORMS').val();
-        $('#result_table tbody').append($('#empty_form tbody').html().replace(/__prefix__/g, form_idx))
+        $('#erfassung tbody').append($('#empty_form tbody').html().replace(/__prefix__/g, form_idx))
         $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
     });
 </script>

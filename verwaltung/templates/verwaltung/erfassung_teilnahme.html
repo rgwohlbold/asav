@@ -6,7 +6,7 @@ asav | Erfassung
 
 {% block content %}
     <form  method="post">
-        <table>
+        <table id="erfassung">
             {% csrf_token %}
             {{ form.as_table }}
             <tr>
