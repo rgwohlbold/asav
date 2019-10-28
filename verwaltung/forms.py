@@ -18,12 +18,12 @@ class TeilnahmeForm(forms.ModelForm):
 
 
 class BaseAktivitaetForm(forms.Form):
-    aktivitaet_name = forms.CharField(max_length=100)
+    aktivitaet_name = forms.CharField(max_length=100, label="Name der Aktivität")
     fach = forms.ModelChoiceField(queryset=Fach.objects.all())
 
 class AktivitaetForm(forms.Form):
-    ergebnis_name = forms.ModelChoiceField(queryset=Ergebnis.objects.all(), required=True)
-    mint_punkte = forms.IntegerField(required=False)
+    ergebnis_name = forms.ModelChoiceField(queryset=Ergebnis.objects.all(), required=True, label="Ergebnis")
+    mint_punkte = forms.IntegerField(required=False, label="MINT-EC-Punkte")
 
 
 class AktivitaetFormSet(BaseFormSet):
