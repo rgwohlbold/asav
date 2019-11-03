@@ -5,41 +5,40 @@ asav | Erfassung Aktivität
 {% endblock %}
 
 {% block content %}
-        <form  method="post">
-
-            <table id="erfassung" >
-            <tbody>
+    <div id="form-container">
+        <form method="post">
+            <div id="form-fields">
                 {% csrf_token %}
-                {{ form.as_table }}
+                {{ form.as_p }}
                 {{ formset.management_form }}
 
                 {% for forms in formset.forms %}
                     {% if forms.ergebnis_name.errors %}
                         {% for error in forms.ergebnis_name.errors %}
-                            <tr ><td colspan="2"><p id="errormessage">{{ error }}</pid></td></tr>
-                            <tr><th>{{ forms.ergebnis_name.label_tag }}</th><td>{{ forms.ergebnis_name }}</td></tr>
-                            <tr><th>{{ forms.mint_punkte.label_tag }}</th><td>{{ forms.mint_punkte }}</td></tr>
+                            {{ forms.ergebnis_name.label_tag }} <span class="form-error">{{ error }}</span>
+                            {{ forms.ergebnis_name }}
+                            {{ forms.mint_punkte.label_tag }}
+                            {{ forms.mint_punkte }}
                         {% endfor %}
                     {% else %}
-                        {{ forms.as_table }}
+                        {{ forms.as_p }}
                     {% endif %}
                 {% endfor %}
-            </tbody>
-            <tfoot>
-                <th colspan="2" ><input type="button" value="Feld hinzufügen" id="add_more"></th>
-                <tr><th colspan="2" ><input type="submit" value="Abschicken"></th></tr>
-            </tfoot>
-            </table>
-                <table id="empty_form" style="display:none">
-                    <tbody>
-                        {{ formset.empty_form.as_table }}
-                    </tbody>
-                </table>
+            </div>
+            <input type="button" value="Ergebnis hinzufügen" id="form-add-ergebnis">
+            <input type="submit" value="Abschicken">
+            <div id="form-empty" style="display: none">
+                <div class="form-ergebnis">
+                    {{ formset.empty_form.as_p }}
+                </div>
+            </div>
         </form>
+    </div>
+
 <script>
-    $('#add_more').click(function() {
+    $('#form-add-ergebnis').click(function() {
         var form_idx = $('#id_form-TOTAL_FORMS').val();
-        $('#erfassung tbody').append($('#empty_form tbody').html().replace(/__prefix__/g, form_idx))
+        $('#form-fields').append($('#form-empty').html().replace(/__prefix__/g, form_idx))
         $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
     });
 </script>
