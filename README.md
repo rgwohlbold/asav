@@ -10,7 +10,7 @@ Icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [https://
 
 © Richard Wohlbold und Alexander Sohn 2019
 
-# todo
+## todo
 * Forms responsive machen
 * Entfernung von Ergebnissen (jquery)
 * Urkunde drucken (für das Schuljahr, alle Schuljahre)
