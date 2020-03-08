@@ -10,5 +10,6 @@ urlpatterns = [
     path('impressum', views.impressum, name='impressum'),
     path('erfassung/schueler', views.erfassung_schueler, name='erfassung_schueler'),
     path('erfassung/teilnahme', views.erfassung_teilnahme, name='erfassung_teilnahme'),
-    path('erfassung/aktivitaet', views.erfassung_aktivitaet, name='erfassung_aktivitaet')
+    path('erfassung/aktivitaet', views.erfassung_aktivitaet, name='erfassung_aktivitaet'),
+    path('urkunde/<int:schueler_id>/<int:schuljahr_id>', views.urkunde, name='urkunde')
 ]

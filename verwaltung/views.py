@@ -15,6 +15,7 @@ from .models import Klasse
 from .models import Aktivitaet
 from .models import AktivitaetErgebnis
 from .models import Ergebnis
+from .models import Schuljahr
 
 def index(request):
     return render(request, 'verwaltung/index.html')
@@ -69,6 +70,11 @@ def erfassung_aktivitaet(request):
         form = BaseAktivitaetForm()
     return render(request, 'verwaltung/erfassung_aktivitaet.html', {'form': form, 'formset': bound_formset})
 
+def urkunde(request, schueler_id, schuljahr_id):
+    s = get_object_or_404(Schueler, id=schueler_id)
+    schuljahr = get_object_or_404(Schuljahr, id=schuljahr_id)
+    teilnahmen = Schueler.objects.get(id=schueler_id).teilnahmen.filter(schuljahr=schuljahr_id)
+    return render(request, 'verwaltung/urkunde.html', {'teilnahmen': teilnahmen, 'schueler': s, 'schuljahr': schuljahr})
 
 
 
@@ -94,9 +100,10 @@ def auswertung(request):
 
 
 def auswertung_detail(request, schueler_id):
+    schuljahre = Schuljahr.objects.all()
     s = get_object_or_404(Schueler, id=schueler_id)
     teilnahmen = Schueler.objects.get(id=schueler_id).teilnahmen.select_related('aktivitaetergebnis', 'aktivitaetergebnis__ergebnis').all()
-    return render(request, 'verwaltung/detail.html', {'schueler': s, 'teilnahmen': teilnahmen})
+    return render(request, 'verwaltung/detail.html', {'schueler': s, 'teilnahmen': teilnahmen, 'schuljahre': schuljahre})
 
 def impressum(request):
     return render(request, 'verwaltung/impressum.html')

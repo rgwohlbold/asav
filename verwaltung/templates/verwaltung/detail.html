@@ -15,16 +15,16 @@ asav | {{ schueler }}
     <li> Email: {{ schueler.email }} </li>
     <li> Klasse: {{ schueler.klasse }} </li>
 </ul>
-
 <h2>Aktivitätsergebnisse</h2>
 {% if teilnahmen|length == 0 %}
     <p>Keine Aktivitäten erfasst.</p>
 {% else %}
+    {% for schuljahr in schuljahre%}
+        <h3>{{ schuljahr }}</h3><a href="{%  url 'urkunde' schueler.id schuljahr.id %}">Urkunde generieren</a>
     <ul>
-    {% for a in teilnahmen %}
-        <li> {{ a.aktivitaetergebnis.aktivitaet }}: {{ a.aktivitaetergebnis.ergebnis }} ({{ a.aktivitaetergebnis.mint_punkte }} MINT-EC-Punkte)</li>
-    {% endfor %}
+
     </ul>
+    {% endfor %}
 {% endif %}
 
 

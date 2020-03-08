@@ -1,0 +1,16 @@
+{% extends "verwaltung/base.html" %}
+
+{% block title %}
+asav | Urkunde
+{% endblock %}
+
+{% block content %}
+    <h1>Urkunde für Außerschulische Aktivitäten</h1>
+    <p>Schüler: {{ schueler.vname }} {{ schueler.nname }}</p>
+    <p>Schuljahr: {{ schuljahr }}</p>
+    <ul>
+    {% for teilnahme in teilnahmen %}
+        <li> {{ teilnahme.aktivitaetergebnis.aktivitaet }}: {{ teilnahme.aktivitaetergebnis.ergebnis }} ({{ teilnahme.aktivitaetergebnis.mint_punkte }} MINT-EC-Punkte)</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
