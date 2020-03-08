@@ -14,7 +14,7 @@ asav | Home
         <ul>
         {% for s in schueler %}
             {% if k == s.klasse %}
-                <a class="list-link" href="{% url 'auswertung_detail' s.id %}"><li>{{ s }} </li></a>
+                <a class="accordion-list-link" href="{% url 'auswertung_detail' s.id %}"><li>{{ s }} </li></a>
             {% endif %}
         {% endfor %}
         </ul>

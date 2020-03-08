@@ -18,7 +18,7 @@ asav | Erfassung
             <ul>
                 {% for s in schueler %}
                     {% if k == s.klasse %}
-                        <a class="list-link" href="{% url 'auswertung_detail' s.id %}"><li>{{ s }} </li></a>
+                        <a class="accordion-list-link" href="{% url 'auswertung_detail' s.id %}"><li>{{ s }} </li></a>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -31,7 +31,7 @@ asav | Erfassung
 
     for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
+            this.classList.toggle("accordion-active");
             var panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;

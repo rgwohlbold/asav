@@ -1,81 +1,99 @@
-html, body, div {
-    padding: 0;
-    margin: 0;
+html,
+body,
+div {
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #5A5096;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  background-color: #5a5096;
+}
+
+h1 {
+  margin-top: 0;
 }
 
 @media (min-width: 992px) {
-    #container {
-        margin-left: 15%;
-        margin-right: 15%;
-    }
+  #container {
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 16px;
+  }
 }
 
+/* NAVBAR STYLES */
+
 #navbar {
-    background-color: black;
-    color: white;
-    list-style-type: none;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 15px;
-    font-size: 17px;
-    display: block;
-    height: 30px;
+  background-color: black;
+  color: white;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 15px;
+  font-size: 17px;
+  display: block;
+  height: 30px;
+}
+
+
+@media (min-width: 992px) {
+  #navbar {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
 }
 
 #navbar li {
-    display: inline-block;
-    height: 100%;
-    vertical-align: bottom;
+  display: inline-block;
+  height: 100%;
+  vertical-align: bottom;
 }
 
 #navbar li a {
-    color: lightgray;
-    text-decoration: underline;
-    vertical-align: middle;
+  color: lightgray;
+  text-decoration: underline;
+  vertical-align: middle;
 }
 
 #navbar li a:visited {
-    color: lightgray;
+  color: lightgray;
 }
 
 #navbar li a:hover {
-    color: white;
+  color: white;
 }
 
 #navbar li.nav-logo {
-    padding-left: 0px;
+  padding-left: 0px;
 }
 
 #navbar li.nav-logo img {
-    height: 30px;
+  height: 30px;
 }
 
 #navbar li.nav-item {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 #content {
-    background-color: white;
-    padding: 20px;
-    padding-bottom: 40px;
+  background-color: white;
+  padding: 20px;
+  padding-bottom: 40px;
 
-    margin-top: 0;
+  margin-top: 0;
 }
 
 #footer {
-    bottom: 0;
-    background-color: white;
-    text-align: center;
-    background-color: black;
-    color: white;
-    left: auto;
-    padding: 20px;
-    margin-top: 0;
+  bottom: 0;
+  background-color: white;
+  text-align: center;
+  background-color: black;
+  color: white;
+  left: auto;
+  padding: 20px;
+  margin-top: 0;
 }
 
 /* Minimum width */
@@ -87,9 +105,38 @@ body {
   }
 }
 
-.list-link{
-    line-height: 1.7;
+/* INPUT STYLES */
+
+input[type="text"],
+select,
+input[type="email"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
+
+input[type="submit"],
+input[type="button"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: #45a049;
+}
+
+
+/* ACCORDION STYLES */
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
@@ -105,7 +152,8 @@ body {
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
+.accordion-active,
+.accordion:hover {
   background-color: #ccc;
 }
 
@@ -115,85 +163,46 @@ body {
   background-color: white;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-out;
+  transition: max-height 0.2s ease-out;
 }
 
 .accordion:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   color: #777;
   float: right;
   margin-left: 5px;
 }
 
-.active:after {
+.accordion-active:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
-h1 {
-    margin-top: 0;
-}
-
-
-
-/* Add padding to containers */
-.container {
-    padding: 16px;
-}
-
-/* Style inputs */
-  input[type=text], select, input[type=email], input[type=number] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+.accordion-container {
+  border: 4px solid #eee;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
-/* Style the submit button */
-input[type=submit], input[type=button] {
+/* ERFASSUNG STYLES */
+
+.accordion-list-link {
+  line-height: 1.7;
+}
+
+
+/* FORM STYLES */
+
+@media (min-width: 992px) {
+  #form-container {
+    max-width: 500px;
+  margin-left: 20px;
+  }
+}
+
+#form-container {
   width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-/* Add a background color to the submit button on mouse-over */
-input[type=submit]:hover, input[type=button]:hover {
-  background-color: #45a049;
-}
-
-#search{
-    width:260px;
-    transition: width 0.4s ease-in-out;
-}
-
-#search:focus{
-    width: 100%;
-}
-
-
-th{
-    text-align: left;
-}
-
-@media(max-width: 768px)  {
-    table{
-    margin: auto;
-}
-}
-
-.accordion-container{
-    border: 8px solid #eee;
-    border-radius: 8px;
-}
-
-#errormessage {
-    font-size: larger;
+.form-error {
+  color: red;
 }
